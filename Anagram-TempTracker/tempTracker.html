@@ -1,0 +1,59 @@
+<script>
+class TempTracker{
+    temperature =  [];
+    constructor() {}
+    insert(val){
+      if(val <= 150 || val >= 0){
+        this.temperature.push(val);
+      }
+      else{
+         throw "invalid Temperature";
+         
+      }
+    }
+
+    get_max(){
+        if(this.temperature.length){
+          return Math.max(...this.temperature);
+        }
+        else{
+          throw "No Temperature Found";
+        }
+        
+    }
+
+    get_min(){
+       if(this.temperature.length){
+        return Math.min(...this.temperature);
+        }
+        else{
+          throw "No Temperature Found";
+        }
+       
+    }
+
+    get_mean(){
+      if(this.temperature.length){
+        return this.temperature.reduce(( prev, curr ) =>  (prev + curr) / this.temperature.length, 0);
+      }
+      else{
+          throw "No Temperature Found";
+        }
+    }
+}
+
+const ts = new TempTracker();
+console.log(ts);
+ts.insert(84);
+ts.insert(47);
+ts.insert(24);
+console.log(ts.get_mean());
+console.log(ts.get_max());
+console.log(ts.get_min());
+
+const ts2 = new TempTracker();
+console.log(ts2.get_mean());
+console.log(ts2.get_max());
+console.log(ts2.get_min());
+
+</script>
